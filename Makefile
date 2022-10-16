@@ -1,6 +1,6 @@
 .PHONY: verse
 verse:
-	docker-compose network create aranoverse
+	docker network create aranoverse
 
 .PHONY: updb
 updb:
