@@ -8,7 +8,7 @@ services:
       - "6379:6379"
     restart: always
     volumes:
-      - "../storage/redis-db:/data"
+      - "../storage/redis:/data"
       - "./redis.conf:/etc/redis/redis.conf"
     command: redis-server --requirepass redis@123456
 
