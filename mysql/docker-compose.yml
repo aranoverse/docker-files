@@ -1,7 +1,6 @@
 version: "3.3"
 services:
   mysql:
-    restart: always
     container_name: mysql
     image: mysql
     environment:
@@ -10,9 +9,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - "../storage/mysql:/var/lib/mysql"
-      - "./config.d:/etc/mysql/conf.d"
-networks:
-  default:
-    external:
-      name: aranoverse
+      - "./storage/mysql:/var/lib/mysql"
+      - "./mysql/config.d:/etc/mysql/conf.d"
+    restart: always
+

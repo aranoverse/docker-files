@@ -17,8 +17,3 @@ services:
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_CREATE_TOPICS: "topic_scanner_1,topic_indexer_1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-
-networks:
-  default:
-    external:
-      name: aranoverse
