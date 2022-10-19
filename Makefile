@@ -3,6 +3,7 @@ verse:
 	docker network create aranoverse
 
 .PHONY: downverse
+downverse:
 	docker-compose -p aranoverse down
 
 .PHONY: updb
