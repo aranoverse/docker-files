@@ -14,3 +14,6 @@ updb:
 upmq:
 	docker-compose  -f docker-compose.yml -f kafka/docker-compose.yml -p aranoverse up -d
 
+.PHONY: upgw
+upgw:
+	cd nginx && docker-compose up -d
