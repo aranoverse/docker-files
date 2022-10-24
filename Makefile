@@ -16,4 +16,8 @@ upmq:
 
 .PHONY: upgw
 upgw:
-	cd nginx && docker-compose up -d
+	docker-compose -f nginx/docker-compose.yaml up -d
+
+.PHONY: downgw
+downgw:
+	docker-compose -f nginx/docker-compose.yaml down
