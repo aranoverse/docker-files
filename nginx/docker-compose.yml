@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    volumes:
+      - ./conf.d/site.conf:/etc/nginx/conf.d/site.conf
+      - ./cert:/etc/cert/site
+      - ../storage/site:/site
+    privileged: true
+    restart: always
+    network_mode: "host"
