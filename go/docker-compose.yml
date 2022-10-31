@@ -1,0 +1,13 @@
+#docker-compose -f docker-compose.yml -p aranoverse  up -d
+version: "3.3"
+services:
+  cmd:
+    container_name: "cmd"
+    build: ./Dockerfile
+    restart: always
+    network_mode: host
+    volumes:
+      - ./config.yaml:/app/config.yaml
+
+
+
