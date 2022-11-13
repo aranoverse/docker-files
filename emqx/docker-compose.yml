@@ -1,0 +1,54 @@
+version: '3.3'
+services:
+  emqx1:
+    container_name: node1.emqx.io
+    hostname: node1.emqx.io
+    image: emqx/emqx
+    environment:
+      - "EMQX_NAME=emqx"
+      - "EMQX_HOST=node1.emqx.io"
+      - "EMQX_CLUSTER__DISCOVERY=static"
+      - "EMQX_CLUSTER__STATIC__SEEDS=emqx@node1.emqx.io, emqx@node2.emqx.io"
+    healthcheck:
+      test: [ "CMD", "/opt/emqx/bin/emqx_ctl", "status" ]
+      interval: 5s
+      timeout: 25s
+      retries: 5
+    ports:
+#      MQTT
+      - "1883:1883"
+#      SSL MQTT
+      - "11883:11883"
+#      LvM2M
+      - "5683:5683"
+#      HTTP API
+      - "8081:8081"
+#      Dashboard
+      - "18083:18083"
+    volumes:
+      - "./log1:/opt/emqx/log"
+      - "./data1:/opt/emqx/data"
+
+  emqx2:
+    container_name: node2.emqx.io
+    hostname: node2.emqx.io
+    image: emqx/emqx
+    environment:
+      - "EMQX_NAME=emqx"
+      - "EMQX_HOST=node2.emqx.io"
+      - "EMQX_CLUSTER__DISCOVERY=static"
+      - "EMQX_CLUSTER__STATIC__SEEDS=emqx@node1.emqx.io, emqx@node2.emqx.io"
+    healthcheck:
+      test: [ "CMD", "/opt/emqx/bin/emqx_ctl", "status" ]
+      interval: 5s
+      timeout: 25s
+      retries: 5
+    volumes:
+      - "./log2:/opt/emqx/log"
+      - "./data2:/opt/emqx/data"
+    ports:
+      - "1895:1883"
+      - "11893:11883"
+      - "5693:5683"
+      - "8091:8081"
+      - "18093:18083"
