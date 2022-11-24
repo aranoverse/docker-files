@@ -1,0 +1,12 @@
+version: "3.5"
+services:
+  exchange-front:
+    container_name: "exchange-front"
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+      - "80:80"
+
