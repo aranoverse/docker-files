@@ -10,5 +10,5 @@ WORKDIR /app
 COPY  --from=builder /builder/api/target/*.jar api.jar
 EXPOSE 8080
 ENTRYPOINT ["java"]
-CMD ["-server"," -Xmx3g","-Xms1g","-Dlog4j2.formatMsgNoLookups=true","-Duser.timezone=GMT+8", "-jar", "/app/api.jar"]
+CMD ["-server","-Xmx3g","-Xms1g","-Dlog4j2.formatMsgNoLookups=true","-Duser.timezone=GMT+8", "-jar", "/app/api.jar"]
 
