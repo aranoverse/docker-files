@@ -1,0 +1,20 @@
+version: '3.5'
+services:
+  alpha1:
+    command: dgraph alpha --my=alpha1:7080 --zero=zero1:5080
+    container_name: alpha1
+    environment:
+      DGRAPH_ALPHA_ACL: secret-file=/dgraph/acl/hmac_secret_file
+      DGRAPH_ALPHA_SECURITY: whitelist=10.0.0.0/8,172.0.0.0/8,192.168.0.0/16
+    image: dgraph/dgraph:v22.0.2
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./hmac_secret_file:/dgraph/acl/hmac_secret_file
+  zero1:
+    command: dgraph zero --my=zero1:5080 --replicas 1 --raft idx=1
+    container_name: zero1
+    image: dgraph/dgraph:v22.0.2
+
+
+#  docker run -it -p 8080:8080 -p 9080:9080 -v ./dgraph:/dgraph dgraph/standalone:latest
