@@ -4,7 +4,7 @@ services:
   cmd:
     container_name: "cmd"
     build: ./Dockerfile
-    restart: always
+    restart: unless-stopped
     network_mode: host
     volumes:
       - ./config.yaml:/app/config.yaml

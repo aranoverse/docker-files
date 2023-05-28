@@ -8,5 +8,6 @@ services:
       - ./cert:/etc/cert/site
       - ../storage/site:/site
     privileged: true
-    restart: always
+    restart: unless-stopped
     network_mode: "host"
+

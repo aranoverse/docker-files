@@ -6,7 +6,7 @@ services:
     image: redis
     ports:
       - "6379:6379"
-    restart: always
+    restart: unless-stopped
     volumes:
       - "./storage/redis:/data"
       - "./redis/redis.conf:/etc/redis/redis.conf"

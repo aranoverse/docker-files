@@ -11,5 +11,5 @@ services:
     volumes:
       - "./storage/mysql:/var/lib/mysql"
       - "./mysql/config.d:/etc/mysql/conf.d"
-    restart: always
+    restart: unless-stopped
 
