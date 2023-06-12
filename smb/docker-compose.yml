@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  samba:
+    image: dperson/samba
+    container_name: samba
+    restart: on-failure
+    network_mode: host
+    command: ' -u "guest;guest123"
+              -s "shared;/shared;no;no;no;guest"'
+    volumes:
+      - ./shared:/shared
+    ports:
+      - 137:137/udp
+      - 138:138/udp
+      - 139:139/tcp
+      - 445:445/tcp
