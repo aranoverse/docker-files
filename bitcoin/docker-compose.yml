@@ -1,12 +1,13 @@
 version: "3"
-
 services:
+  #      -rpcuser=user
+  #      -rpcpassword=pwd
   bitcoind_regtest:
     container_name: bitcoind_regtest
-    image: polarlightning/bitcoind:25.0
+    image: polarlightning/bitcoind:26.0
     restart: unless-stopped
     volumes:
-      - ./bitcoind-data:/home/bitcoin/.bitcoin/regtest
+      - ./bitcoind-data:/home/bitcoin/.bitcoin
     command:
       -regtest=1
       -server=1
@@ -19,8 +20,7 @@ services:
       -uacomment=tbkdevbitcoindregtest
       -printpriority=1
       -logtimemicros=1
-      -rpcuser=user
-      -rpcpassword=pwd
+      -rpcauth=user:1aa9a69e6bc4cc97c061e13236fd67ad$46d5508c5c6e78dc417e9c69887bb2b0e9f4834bec606e5a34f01ac52ded2c6b
       -rpcbind=0.0.0.0
       -rpcallowip=0.0.0.0/0
       -zmqpubrawblock=tcp://0.0.0.0:28332
