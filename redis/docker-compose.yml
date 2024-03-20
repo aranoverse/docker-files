@@ -10,6 +10,6 @@ services:
     volumes:
       - "./storage/redis:/data"
       - "./redis/redis.conf:/etc/redis/redis.conf"
-#    command: redis-server --requirepass redis@123456
+    command: redis-server --requirepass redis@123456
 
 
