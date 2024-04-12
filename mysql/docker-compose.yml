@@ -6,9 +6,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: mysql@123
     ports:
-      - 3306:3306
+      - "3306:3306"
     volumes:
       - "./storage/mysql:/var/lib/mysql"
-      - "./mysql/config.d:/etc/mysql/conf.d"
+#      - "./mysql/config.d/my.conf:/etc/mysql/conf.d"
     restart: unless-stopped
-
