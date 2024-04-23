@@ -5,8 +5,8 @@ services:
     image: nginx
     volumes:
       - ./conf.d/site.conf:/etc/nginx/conf.d/site.conf
-      - ./cert:/etc/cert/site
-      - ../storage/site:/site
+#      - ./cert:/etc/cert/site
+#      - ../storage/site:/site
     privileged: true
     restart: unless-stopped
     network_mode: "host"
